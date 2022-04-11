@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cssTable.css">
+</head>
+<body>
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contect List</a>
+        <a href="favourites.html">Favourites</a>
+    </div>
+    <table>
+        <thead id="top">
+            <td>
+                Contect Name
+            </td>
+            <td>
+                Mobile Number
+            </td>
+            <td>
+                Type
+            </td>
+            <td>
+                Favourites
+            </td>
+        </thead>
+    </table>
+</body>
+<script>
+    var user = JSON.parse(localStorage.getItem('contectList'));
+    user.forEach(element => {
+        // event.preventDefault()
+        var box = document.createElement('thead');
+        var name = document.createElement('td');
+        name.innerText = element.name;
+        var mobile = document.createElement('td');
+        mobile.innerText = element.mobile; 
+        var type = document.createElement('td');
+        type.innerText = element.tag; 
+        var fav = document.createElement('a');
+       fav.innerText = 'Add to Fav'; 
+        box.append(name, mobile, type, fav);
+        
+        document.querySelector('table').append(box);
+    });
+
+
+</script>
+</html>
